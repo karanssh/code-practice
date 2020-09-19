@@ -3,7 +3,6 @@ package main
 import (
 	"fmt"
 	"io"
-	"os"
 )
 
 func cf734a(in io.Reader, out io.Writer) {
@@ -34,4 +33,4 @@ func cf734a(in io.Reader, out io.Writer) {
 
 }
 
-func main() { cf734a(os.Stdin, os.Stdout) }
+// func main() { cf734a(os.Stdin, os.Stdout) }
