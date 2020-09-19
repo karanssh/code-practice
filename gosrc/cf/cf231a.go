@@ -3,7 +3,6 @@ package main
 import (
 	"fmt"
 	"io"
-	"os"
 )
 
 func cf231a(in io.Reader, out io.Writer) {
@@ -24,4 +23,4 @@ func cf231a(in io.Reader, out io.Writer) {
 
 }
 
-func main() { cf231a(os.Stdin, os.Stdout) }
+// func main() { cf231a(os.Stdin, os.Stdout) }
