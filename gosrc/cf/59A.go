@@ -3,7 +3,6 @@ package main
 import (
 	"fmt"
 	"io"
-	"os"
 	"strings"
 	"unicode"
 )
@@ -29,4 +28,4 @@ func cf59a(in io.Reader, out io.Writer) {
 
 }
 
-func main() { cf59a(os.Stdin, os.Stdout) }
+// func main() { cf59a(os.Stdin, os.Stdout) }
