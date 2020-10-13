@@ -3,7 +3,6 @@ package main
 import (
 	"fmt"
 	"io"
-	"os"
 	"strconv"
 )
 
@@ -38,8 +37,8 @@ func cf271a(in io.Reader, out io.Writer) {
 	fmt.Println(nextYearInt)
 }
 
-func main() {
+// func main() {
 
-	cf271a(os.Stdin, os.Stdout)
+// 	// cf271a(os.Stdin, os.Stdout)
 
-}
+// }
