@@ -12,6 +12,7 @@ System.out.println("CHAT WITH HER!");
       }else {
 System.out.println("IGNORE HIM!");
       }
+      sc.close();
       
    
     // printDistinct("kkaran");
