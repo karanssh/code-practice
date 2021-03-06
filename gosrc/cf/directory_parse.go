@@ -150,7 +150,14 @@ func imp1(path string) string {
 func simplifyPath(path string) string {
 	return pathUtil.Clean(path)
 }
-func main() {
-	fmt.Println(parseDirectory("/a/./b/../../c/"))
 
-}
+// func addBinary(a string, b string) string {
+// 	val1, _ := strconv.ParseInt(a, 10, 64)
+// 	val2, _ := strconv.ParseInt(b, 10, 64)
+// 	return strconv.Itoa(val1 + val2)
+// }
+
+// func main() {
+// 	fmt.Println(parseDirectory("/a/./b/../../c/"))
+
+// }

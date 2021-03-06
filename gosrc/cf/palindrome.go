@@ -6,15 +6,15 @@ import (
 	"strings"
 )
 
-func main() {
-	input := "A man, a plan, a canal: Panama"
-	if isPalindromeIgnoreCase(input) {
-		fmt.Println("pass")
-	} else {
-		fmt.Println("fail")
+// func main() {
+// 	input := "A man, a plan, a canal: Panama"
+// 	if isPalindromeIgnoreCase(input) {
+// 		fmt.Println("pass")
+// 	} else {
+// 		fmt.Println("fail")
 
-	}
-}
+// 	}
+// }
 func isPalindromeIgnoreCase(input string) bool {
 	reg := regexp.MustCompile("[^a-zA-Z0-9 *]")
 	reg2 := regexp.MustCompile("\\s")

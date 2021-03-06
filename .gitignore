@@ -1,2 +1,4 @@
 java/.vscode/settings.json
 .vscode/settings.json
+gosrc/.vscode/launch.json
+gosrc/cf/.vscode/launch.json
