@@ -154,6 +154,40 @@ public class bfs {
 
         return result;
     }
+    public int widthOfBinaryTree(TreeNode root) {
+        if(null == root) {
+           return 0;
+       }
+       Map<TreeNode, Integer> mp;
+       ArrayDeque<Map<TreeNode, Integer>> queue = new ArrayDeque<>();
+       mp = new HashMap<>();
+       mp.put(root, 0);
+       queue.add(mp);
+       int ans = 0;
+       while(!queue.isEmpty()) {
+           int sz = queue.size();
+           Map<TreeNode, Integer> first = queue.getFirst();
+           Map<TreeNode, Integer> last = queue.getLast();
+           ans = Math.max(ans, (Integer) last.values().toArray()[0] - (Integer) first.values().toArray()[0] + 1);
+           Map<TreeNode, Integer> node;
+           for (int i = 0; i < sz; i++) {
+               node = queue.poll();
+               TreeNode n = (TreeNode) node.keySet().toArray()[0];
+               Integer value = (Integer) node.values().toArray()[0];
+               if (n.left != null) {
+                   mp = new HashMap<>();
+                   mp.put(n.left, 2 * value + 1);
+                   queue.add(mp);
+               }
+               if (n.right != null) {
+                   mp = new HashMap<>();
+                   mp.put(n.right, 2 * value + 2);
+                   queue.add(mp);
+               }
+           }
+       }
+       return ans;
+   }
 
     public static void main(String[] args) {
         TreeNode root = new TreeNode(12);
