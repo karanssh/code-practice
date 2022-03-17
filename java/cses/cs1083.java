@@ -25,18 +25,4 @@ public class cs1083 {
         sc.close();
     }
 
-    public static void findMissingNumV2() {
-        Scanner sc = new Scanner(System.in);
-        int n = sc.nextInt();
-        int[] nums = new int[n]; 
-        int sumExpect = (n * (n+1))/2;
-        int sumActual = 0;
-
-        for (int i=0; i<n-1; i++) {
-            sumActual += sc.nextInt();
-            
-        }
-
-        sc.close();
-    }
 }
