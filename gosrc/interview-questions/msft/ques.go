@@ -2,65 +2,85 @@ package main
 
 import "fmt"
 
-var (
-	timeValue map[int]map[int]int
-)
-
 func main() {
-	fmt.Println("say hi")
-
-	set(1, 1, 0)
-	set(1, 2, 2)
-	fmt.Println(get(1, 2))
-
-	set(1, 5, 2)
-	fmt.Println(get(1, 2))
-
+	var input [][]int
+	input = append(input, []int{1, 4})
+	input = append(input, []int{2, 6})
+	input = append(input, []int{7, 9})
+	fmt.Println(findMergedIntervals(input))
+	fmt.Println("This is a debug message")
 }
 
-func get(key, time int) (int, bool) {
-	if timeValue == nil {
-		return 0, false
-	}
-	//map[key]map[time]value
-	anotherMap, ok := timeValue[key]
-	if !ok {
-		return 0, false
-	}
-	val, found := anotherMap[time]
-	if !found {
-		// return the value at the most recent timepoint
-		max := -9999
-		val := 0
-		for k, v := range anotherMap {
-			if v > max {
-				val = v
-				max = k
+type pairValues struct {
+	valueA int
+	valueB int
+}
+
+func findMergedIntervals(arr [][]int) []pairValues {
+	start := arr[0][0]
+	end := arr[0][1]
+
+	res := make([]pairValues, 0)
+	newInterval := pairValues
+	for _, v := range arr {
+
+		if v[0] <= end {
+			if end > v[1] {
+				newInterval = end
+			} else {
+				newInterval = v[1]
 			}
+		} else {
+			res = append(res, pairValues{valueA: start, valueB: end})
 		}
-		return val, true
+
+		if end >= v[1] {
+			start = v[0]
+			end = v[1]
+			res = append(res, pairValues{valueA: start, valueB: end})
+		} else {
+
+			end = v[1]
+			newInterval = interval
+		}
 	}
-	return val, found
+	res = append(res, pairValues{valueA: start, valueB: end})
+	return res
 }
 
-func set(key, value, time int) {
-	if timeValue == nil {
-		timeValue = make(map[int]map[int]int)
-	}
-	if time < 0 {
-		return
-	}
-	// timeValue[key] = map[int]int{
-	// 	time: value,
-	// }
+/*
+ newInterval
 
-	_, ok := timeValue[key]
-	if ok {
-		// append
-		timeValue[key][time] = value
-		return
-	}
-	timeValue[key] = map[int]int{
-		time: value,
-	}
-}
+ if interval[0] <= intervals[1] {
+	 newInterval = max (newInterva;[1], interval[1])
+
+ } else {
+	 res = append(res, interval)
+	 newInterval = interval
+ }
+*/
+
+/*
+public List<List<Integer>> findMergedIntervals(int arr[][]) {
+        List<List<Integer>> res;
+                Arrays.sort(arr, (a,b)->a[0]-b[0]);
+                int start = arr[0][0];
+                int end = arr[0][1];
+
+                for (int innerVal[] : arr ){
+
+                    if (end>innerVal[1]) {
+                        end = innerVal[1];
+                    }else {
+
+                      //  res.add(start, end)
+                        start = innerVal[0];
+                        end = innerVal[1];
+
+                    }
+                }
+                //res.add(start, end);
+                return res;
+
+    }
+*/
