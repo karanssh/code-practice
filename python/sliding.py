@@ -69,3 +69,31 @@ def subarraySumK(nums: List[int], k: int) -> List[int]:
 def runSubarraySumK():
     print(subarraySumK([2,1,5,1,3,2],3))
     print(subarraySumK([2,3,4,1,5],2))
+
+
+# smallest subarray with a sum >=K
+
+def smallestSubarrayLengthSumGreatherEqualK(nums: List[int], k: int) -> List[int]:
+    windowStart = 0
+    windowEnd = 0
+    resLen = float("+inf")
+    subarraySum = 0
+    for windowEnd in range(len(nums)):
+        subarraySum += nums[windowEnd]
+        while subarraySum>=k:
+            resLen = min(resLen, windowEnd-windowStart+1)
+            subarraySum -= nums[windowStart]
+            windowStart+=1
+        else:
+            windowEnd+=1
+
+    return 0 if resLen == float("+inf") else resLen
+
+def runsmallestSubarrayLengthSumGreatherEqualK():
+    print(smallestSubarrayLengthSumGreatherEqualK([2,3,1,2,4,3],7))
+    print(smallestSubarrayLengthSumGreatherEqualK([2,3,4,1,5],2))
+    print(smallestSubarrayLengthSumGreatherEqualK([2,1,5,2,3,2],7))
+
+
+if __name__ == "__main__":
+    runsmallestSubarrayLengthSumGreatherEqualK()
