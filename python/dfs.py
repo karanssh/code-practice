@@ -43,4 +43,26 @@ def pathSumEqualsK(root: TreeNode, k : int):
     hasSum = helper(root, 0)
     print(hasSum)
 
-pathSumEqualsK(randomTree(), 13)
+
+def findPathSumEqualsK(root: TreeNode, k:int): 
+    allPaths = []
+    def helper(currentNode, curSum, currentPath):
+        if currentNode is None:
+            return 
+
+        if k == curSum and currentNode.left is None and currentNode.right is None:
+            allPaths.append(currentPath.copy()) 
+        
+        currentPath.append(currentNode.val)
+        helper(currentNode.left, curSum+currentNode.val, currentPath)
+        helper(currentNode.right, curSum+currentNode.val, currentPath)
+        
+        curSum -= currentPath[-1]
+        del currentPath[-1]
+        
+    helper(root, 0, [])
+    print(allPaths)
+    return allPaths
+
+
+findPathSumEqualsK(randomTree(), 28)
