@@ -1,3 +1,6 @@
+from typing import Counter, List
+
+
 class Solution:
     def divideArray(self, nums: List[int]) -> bool:
         if len(nums)%2!=0:
