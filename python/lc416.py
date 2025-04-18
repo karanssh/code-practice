@@ -1,25 +1,22 @@
 from typing import List
 
+
 def canPartition(nums: List[int]) -> bool:
     total = sum(nums)
     if total % 2 != 0:
         return False
     
     target = total // 2
-    n = len(nums)
-    dp = [[False] * (target + 1) for _ in range(n + 1)]
+    dp = [False] * (target + 1)
+    dp[0] = True  # base case: 0 sum is always achievable (empty subset)
 
-    for i in range(n + 1):
-        dp[i][0] = True  # base case
+    for num in nums:
+        # iterate backwards to prevent using the same number multiple times
+        for t in range(target, num - 1, -1):
+            dp[t] = dp[t] or dp[t - num]
 
-    for i in range(1, n + 1):
-        for t in range(1, target + 1):
-            if nums[i - 1] > t:
-                dp[i][t] = dp[i - 1][t]
-            else:
-                dp[i][t] = dp[i - 1][t] or dp[i - 1][t - nums[i - 1]]
+    return dp[target]
 
-    return dp[n][target]
 
 
 # Example usage:
