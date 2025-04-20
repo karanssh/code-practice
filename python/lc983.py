@@ -17,3 +17,6 @@ class Solution:
                 )
         
         return dp[last_day]
+
+min_cost = Solution().mincostTickets([1, 4, 6, 7, 8, 20], [2, 7, 15])
+print(min_cost)  # Output: 11
